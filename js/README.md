@@ -107,3 +107,8 @@ scopeMask.tryDecode("user", "not-a-real-id");          // null
 scopeMask.tryDecodeMany("user", ["not-a-real-id"]);    // [null]
 scopeMask.encode("user", null);                        // null
 ```
+
+
+## Additional resources
+
+See [Overview](https://khan-asfi-reza.github.io/scopemask/#overview) for more details.
