@@ -106,3 +106,8 @@ scope_mask.try_decode("user", "not-a-real-id")         # None
 scope_mask.try_decode_many("user", ["not-a-real-id"])  # [None]
 scope_mask.encode("user", None)                        # None
 ```
+
+
+## Additional resources
+
+See [Overview](https://khan-asfi-reza.github.io/scopemask/#overview) for more details.

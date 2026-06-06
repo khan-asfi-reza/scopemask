@@ -104,3 +104,8 @@ vals, _ := scopemask.DecodeMany[uint64](scopeMask, "user", ids, "")   // [1 2 3]
 v, ok := scopemask.TryDecode[uint64](scopeMask, "user", id, "")
 vals, oks := scopemask.TryDecodeMany[uint64](scopeMask, "user", ids, "")
 ```
+
+
+## Additional resources
+
+See [Overview](https://khan-asfi-reza.github.io/scopemask/#overview) for more details.
