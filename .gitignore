@@ -1,0 +1,25 @@
+# Python
+python/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# JS / TS
+js/node_modules/
+js/dist/
+*.tsbuildinfo
+
+# Go
+go/bin/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Docs
+site/
