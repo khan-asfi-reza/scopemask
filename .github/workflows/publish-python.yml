@@ -22,9 +22,9 @@ jobs:
         run: |
           tag="${{ github.event.release.tag_name }}"
           want="${tag#py/v}"
-          have="$(grep -m1 '^version' pyproject.toml | sed -E 's/.*"(.*)".*/\1/')"
+          have="$(grep -m1 '__version__' scopemask/__init__.py | sed -E 's/.*"(.*)".*/\1/')"
           if [ "$want" != "$have" ]; then
-            echo "tag $tag (version $want) != pyproject version $have"
+            echo "tag $tag (version $want) != package version $have"
             exit 1
           fi
       - run: uv build
