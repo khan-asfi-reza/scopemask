@@ -22,22 +22,19 @@ scope_mask = ScopeMask("parity-secret")
 
 Optional keyword arguments:
 
-- `min_length`: pad every id to at least this many characters (default 16).
-- `base_alphabet`: the characters ids are built from; must be unique (default A–Z, a–z, 0–9).
-- `previous_secrets`: extra secrets accepted when decoding but never used for encoding, so ids made with an old secret keep working after you rotate.
-
-```python
-scope_mask = ScopeMask(
-    "parity-secret",
-    min_length=24,
-    base_alphabet="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
-    previous_secrets=("old-secret",),
-)
-```
+| Argument | Type | Default | Description |
+|----------|------|---------|-------------|
+| `min_length` | `int` | `16` | Pad every id to at least this many characters. |
+| `base_alphabet` | `str` | `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789` | Characters ids are built from; must be unique. |
+| `previous_secrets` | `tuple[str \| bytes, ...]` | `()` | Extra secrets accepted when decoding only, so ids made with an old secret keep working after being rotated. |
 
 ## Encode and decode
 
 ```python
+from scopemask import ScopeMask
+
+scope_mask = ScopeMask("parity-secret")
+
 scope_mask.encode("user", 42)                    # "xgFeePgoWUZHCNLo"
 scope_mask.decode("user", "xgFeePgoWUZHCNLo")    # 42
 ```

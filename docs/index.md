@@ -10,7 +10,7 @@ Scope-bound opaque id masking.
 
 ## Get started
 
-Pick your language:
+Pick a language:
 
 - **[Python](python.md)**: `pip install scopemask`
 - **[JavaScript / TypeScript](js.md)**: `npm install scopemask`

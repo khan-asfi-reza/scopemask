@@ -42,7 +42,7 @@ npm run typecheck
 
 The three implementations are wire-compatible: the same `(secret, scope, value, prefix)` produces the same id everywhere. A new port has to reproduce that exact output, so the bar is "passes the shared parity vectors."
 
-You will need, in the target language:
+The target language needs:
 
 - a [sqids](https://sqids.org) port,
 - HMAC-SHA256 (standard library or an audited package).
@@ -53,7 +53,7 @@ Steps:
 
 2. **Implement the API.** Match the existing surface: `encode`, `decode`, `try_decode`, the `*_many` batch variants, and the options (`min_length`, `base_alphabet`, `previous_secrets`). Also should include the scope bound option.
 
-3. **Verify against the parity vectors.** Load [`fixtures/parity_vectors.json`](https://github.com/khan-asfi-reza/scopemask/blob/main/fixtures/parity_vectors.json) and, for every entry, assert `encode(scope, value, prefix) == id` and that decoding `id` returns the original `value`. This is the conformance test that proves your port matches the others. Each value carries a `type` (`int`, `str`, `bytes`, `uuid`) and is stored as a string: integers as decimal, bytes as hex, UUIDs in canonical form.
+3. **Verify against the parity vectors.** Load [`fixtures/parity_vectors.json`](https://github.com/khan-asfi-reza/scopemask/blob/main/fixtures/parity_vectors.json) and, for every entry, assert `encode(scope, value, prefix) == id` and that decoding `id` returns the original `value`. This is the conformance test that proves the port matches the others. Each value carries a `type` (`int`, `str`, `bytes`, `uuid`) and is stored as a string: integers as decimal, bytes as hex, UUIDs in canonical form.
 
 4. **Wire it up.** Add a directory README, a docs page, and a CI workflow modelled on the existing ones.
 

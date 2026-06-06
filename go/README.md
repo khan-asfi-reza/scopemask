@@ -22,22 +22,19 @@ scopeMask, _ := scopemask.New("parity-secret")
 
 Optional functions:
 
-- `WithMinLength(n)`: pad every id to at least `n` characters (default 16).
-- `WithBaseAlphabet(a)`: the characters ids are built from; must be unique (default A–Z, a–z, 0–9).
-- `WithPreviousSecrets(...)`: extra secrets accepted when decoding but never used for encoding, so ids made with an old secret keep working after you rotate.
-
-```go
-scopeMask, _ = scopemask.New(
-    "parity-secret",
-    scopemask.WithMinLength(24),
-    scopemask.WithBaseAlphabet("ABCDEFGHJKLMNPQRSTUVWXYZ23456789"),
-    scopemask.WithPreviousSecrets("old-secret"),
-)
-```
+| Function | Type | Default | Description |
+|----------|------|---------|-------------|
+| `WithMinLength(n)` | `uint8` | `16` | Pad every id to at least `n` characters. |
+| `WithBaseAlphabet(a)` | `string` | `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789` | Characters ids are built from; must be unique. |
+| `WithPreviousSecrets(...)` | `...string` | none | Extra secrets accepted when decoding only, so ids made with an old secret keep working after being rotated. |
 
 ## Encode and decode
 
 ```go
+import scopemask "github.com/khan-asfi-reza/scopemask/go"
+
+scopeMask, _ := scopemask.New("parity-secret")
+
 id, _ := scopemask.Encode(scopeMask, "user", uint64(42), "")   // "xgFeePgoWUZHCNLo"
 v, _ := scopemask.Decode[uint64](scopeMask, "user", id, "")     // 42
 ```

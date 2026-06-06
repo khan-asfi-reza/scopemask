@@ -24,21 +24,19 @@ const scopeMask = new ScopeMask("parity-secret");
 
 Optional settings:
 
-- `minLength`: pad every id to at least this many characters (default 16).
-- `baseAlphabet`: the characters ids are built from; must be unique (default A–Z, a–z, 0–9).
-- `previousSecrets`: extra secrets accepted when decoding but never used for encoding, so ids made with an old secret keep working after you rotate.
-
-```ts
-new ScopeMask("parity-secret", {
-  minLength: 24,
-  baseAlphabet: "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
-  previousSecrets: ["old-secret"],
-});
-```
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `minLength` | `number` | `16` | Pad every id to at least this many characters. |
+| `baseAlphabet` | `string` | `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789` | Characters ids are built from; must be unique. |
+| `previousSecrets` | `(Uint8Array \| string)[]` | `[]` | Extra secrets accepted when decoding only, so ids made with an old secret keep working after being rotated. |
 
 ## Encode and decode
 
 ```ts
+import { ScopeMask } from "scopemask";
+
+const scopeMask = new ScopeMask("parity-secret");
+
 scopeMask.encode("user", 42);                    // "xgFeePgoWUZHCNLo"
 scopeMask.decode("user", "xgFeePgoWUZHCNLo");    // 42
 ```
