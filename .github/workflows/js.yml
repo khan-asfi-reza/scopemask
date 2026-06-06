@@ -1,0 +1,42 @@
+name: JS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "js/**"
+      - "fixtures/parity_vectors.json"
+      - ".github/workflows/js.yml"
+  pull_request:
+    paths:
+      - "js/**"
+      - "fixtures/parity_vectors.json"
+      - ".github/workflows/js.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: js-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: js
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["18", "20", "22"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: js/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run test:coverage
+      - run: npm run build

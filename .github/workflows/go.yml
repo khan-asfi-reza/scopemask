@@ -1,0 +1,35 @@
+name: Go
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "go/**"
+      - "fixtures/parity_vectors.json"
+      - ".github/workflows/go.yml"
+  pull_request:
+    paths:
+      - "go/**"
+      - "fixtures/parity_vectors.json"
+      - ".github/workflows/go.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: go-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: go
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go/go.mod
+          cache-dependency-path: go/go.sum
+      - run: go vet ./...
+      - run: go test -race -cover ./...

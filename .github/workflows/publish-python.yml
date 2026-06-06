@@ -1,0 +1,33 @@
+name: Publish Python
+
+on:
+  release:
+    types: [published]
+
+defaults:
+  run:
+    working-directory: python
+
+jobs:
+  publish:
+    if: startsWith(github.event.release.tag_name, 'py/v')
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Verify tag matches package version
+        run: |
+          tag="${{ github.event.release.tag_name }}"
+          want="${tag#py/v}"
+          have="$(grep -m1 '^version' pyproject.toml | sed -E 's/.*"(.*)".*/\1/')"
+          if [ "$want" != "$have" ]; then
+            echo "tag $tag (version $want) != pyproject version $have"
+            exit 1
+          fi
+      - run: uv build
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: python/dist

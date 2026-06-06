@@ -1,0 +1,20 @@
+name: Release Go
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Semver without leading v, e.g. 0.1.0"
+        required: true
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          tag="go/v${{ inputs.version }}"
+          git tag "$tag"
+          git push origin "$tag"

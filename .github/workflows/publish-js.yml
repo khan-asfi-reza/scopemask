@@ -1,0 +1,39 @@
+name: Publish JS
+
+on:
+  release:
+    types: [published]
+
+defaults:
+  run:
+    working-directory: js
+
+jobs:
+  publish:
+    if: startsWith(github.event.release.tag_name, 'js/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+          cache: npm
+          cache-dependency-path: js/package-lock.json
+      - name: Verify tag matches package version
+        run: |
+          tag="${{ github.event.release.tag_name }}"
+          want="${tag#js/v}"
+          have="$(node -p "require('./package.json').version")"
+          if [ "$want" != "$have" ]; then
+            echo "tag $tag (version $want) != package.json version $have"
+            exit 1
+          fi
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
