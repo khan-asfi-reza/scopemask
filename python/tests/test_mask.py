@@ -79,7 +79,14 @@ def test_cross_language_parity():
     with open(VECTORS_PATH, encoding="utf-8") as f:
         vectors = json.load(f)
     for v in vectors:
-        scope_mask = ScopeMask(v["secret"])
+        kwargs = {}
+        if "min_length" in v:
+            kwargs["min_length"] = v["min_length"]
+        if "base_alphabet" in v:
+            kwargs["base_alphabet"] = v["base_alphabet"]
+        if "previous_secrets" in v:
+            kwargs["previous_secrets"] = tuple(v["previous_secrets"])
+        scope_mask = ScopeMask(v["secret"], **kwargs)
         value = build_value(v["type"], v["value"])
         assert scope_mask.encode(v["scope"], value, v["prefix"]) == v["id"]
         decoded = scope_mask.decode(v["scope"], v["id"], v["prefix"])

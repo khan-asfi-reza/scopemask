@@ -105,6 +105,26 @@ scope_mask.encode("user", None)                        # None
 ```
 
 
+## Custom configuration
+
+```python
+from scopemask import ScopeMask
+
+scope_mask = ScopeMask(
+    "parity-secret",
+    min_length=24,
+    base_alphabet="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+)
+scope_mask.encode("user", 42)   # "527M4BZ6EU4YX3CYWDQ2GRAE"
+
+# secret rotation: ids minted under an old secret still decode
+old = ScopeMask("old-secret")
+enc = old.encode("user", 99)    # "CeAUI5UM6CeUJISr"
+
+rotated = ScopeMask("new-secret", previous_secrets=("old-secret",))
+rotated.decode("user", enc)     # 99
+```
+
 ## Additional resources
 
 See [Overview](https://khan-asfi-reza.github.io/scopemask/#overview) for more details.

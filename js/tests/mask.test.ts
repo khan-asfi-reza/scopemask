@@ -46,6 +46,9 @@ interface ParityVector {
   type: string;
   value: string;
   id: string;
+  min_length?: number;
+  base_alphabet?: string;
+  previous_secrets?: string[];
 }
 
 const PARITY_VECTORS: ParityVector[] = JSON.parse(
@@ -123,7 +126,11 @@ describe("ScopeMask", () => {
 
   it("cross_language_parity", () => {
     for (const v of PARITY_VECTORS) {
-      const scopeMask = new ScopeMask(v.secret);
+      const scopeMask = new ScopeMask(v.secret, {
+        minLength: v.min_length,
+        baseAlphabet: v.base_alphabet,
+        previousSecrets: v.previous_secrets,
+      });
       const value = buildValue(v.type, v.value);
       expect(scopeMask.encode(v.scope, value, v.prefix)).toBe(v.id);
 

@@ -1948,14 +1948,6 @@
     "scope": "user",
     "prefix": "",
     "type": "int",
-    "value": "42",
-    "id": "xgFeePgoWUZHCNLo"
-  },
-  {
-    "secret": "parity-secret",
-    "scope": "user",
-    "prefix": "",
-    "type": "int",
     "value": "255",
     "id": "9AOYl2HSidFSW0mg"
   },
@@ -2060,14 +2052,6 @@
     "scope": "user",
     "prefix": "",
     "type": "str",
-    "value": "hello",
-    "id": "yqBiRnZBIdqXslkrXM"
-  },
-  {
-    "secret": "parity-secret",
-    "scope": "user",
-    "prefix": "",
-    "type": "str",
     "value": "user@example.com",
     "id": "ZyHcMWCCCgnMpFnr4LbJ4JSVmHVqloMmwF3"
   },
@@ -2132,14 +2116,6 @@
     "scope": "user",
     "prefix": "",
     "type": "bytes",
-    "value": "0001ff",
-    "id": "RLDIyRQmFljZ1gBD"
-  },
-  {
-    "secret": "parity-secret",
-    "scope": "user",
-    "prefix": "",
-    "type": "bytes",
     "value": "deadbeef",
     "id": "wgtNaR5LzHKd0CG4D"
   },
@@ -2156,14 +2132,6 @@
     "scope": "user",
     "prefix": "",
     "type": "uuid",
-    "value": "12345678-1234-5678-1234-567812345678",
-    "id": "miQAnixf6TYaACwhThxDJ973X5vSuKqjp2W"
-  },
-  {
-    "secret": "parity-secret",
-    "scope": "user",
-    "prefix": "",
-    "type": "uuid",
     "value": "00000000-0000-0000-0000-000000000000",
     "id": "wptNuYHJxxKabBT5Dpdi"
   },
@@ -2174,5 +2142,375 @@
     "type": "uuid",
     "value": "ffffffff-ffff-ffff-ffff-ffffffffffff",
     "id": "cIlzR5AHCJSUNAqnmsyfMXGmhqRd0avKB1Kh"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "min_length": 24,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "527M4BZ6EU4YX3CYWDQ2GRAE"
+  },
+  {
+    "secret": "old-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "99",
+    "id": "CeAUI5UM6CeUJISr"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "min_length": 16,
+    "id": "xgFeePgoWUZHCNLo"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "min_length": 20,
+    "id": "xgFeePgoWUZHCNLom4kr"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "min_length": 24,
+    "id": "xgFeePgoWUZHCNLom4krVKpB"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "min_length": 32,
+    "id": "xgFeePgoWUZHCNLom4krVKpBSU9QCh5P"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "min_length": 40,
+    "id": "xgFeePgoWUZHCNLom4krVKpBSU9QCh5PARO3iDws"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "min_length": 48,
+    "id": "xgFeePgoWUZHCNLom4krVKpBSU9QCh5PARO3iDwsMF8GfndJ"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "min_length": 56,
+    "id": "xgFeePgoWUZHCNLom4krVKpBSU9QCh5PARO3iDwsMF8GfndJ6z2Wtu0H"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "min_length": 64,
+    "id": "xgFeePgoWUZHCNLom4krVKpBSU9QCh5PARO3iDwsMF8GfndJ6z2Wtu0HYy1xvIlj"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "527M4BZ6EU4YX3CY"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "base_alphabet": "abcdefghijklmnopqrstuvwxyz",
+    "id": "tleflapvxchigrof"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "base_alphabet": "0123456789abcdef",
+    "id": "498f23e7cbc997a51"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "base_alphabet": "abcdefg1234#$",
+    "id": "dabafcbcbg2#bad$b$"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "0",
+    "min_length": 24,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "MDWU5UEGFY43QHLX9ZS5BREU"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "18446744073709551615",
+    "min_length": 24,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "WA3R5FN9CMRSK9C5JZWKA3YDSRD"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "str",
+    "value": "hello",
+    "min_length": 24,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "6U4VBWZX4VPKDZCJR3YM4X3W"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "str",
+    "value": "üñîçødé 🚀",
+    "min_length": 24,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "JXSDKP2DBN6G4Z8Z768EP6T3A7GF2GSSQQBQHS58F8E86"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "bytes",
+    "value": "0001ff",
+    "min_length": 24,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "QUJMHBEJBUMBVKZY6QG3JLYU"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "uuid",
+    "value": "12345678-1234-5678-1234-567812345678",
+    "min_length": 24,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "SDAQHELQ9TK6BKE3UEDGZKXURGPZ6Z4H8EWKTEUJW"
+  },
+  {
+    "secret": "test-secret",
+    "scope": "order",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "min_length": 32,
+    "base_alphabet": "abcdefghijklmnopqrstuvwxyz",
+    "id": "hrgidxpfmbcjhrunflzdjtbncohwukix"
+  },
+  {
+    "secret": "test-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "str",
+    "value": "hello",
+    "min_length": 48,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "ZXBG86FRHGB2XE5JKJE2KFFRJPSCGW9EKD5VBY73LT68M24H"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "order",
+    "prefix": "",
+    "type": "bytes",
+    "value": "deadbeef",
+    "min_length": 64,
+    "id": "sN1usVk8fJPUyqHTHsG4jDh9OQPlN6knJ7BtXsEZiMqpdc1CHYF2xgboRTK5uIzW"
+  },
+  {
+    "secret": "s3cr3t-key-2024",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "255",
+    "min_length": 24,
+    "base_alphabet": "0123456789abcdef",
+    "id": "1fba611f8907665a24ec1634"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "id_",
+    "type": "int",
+    "value": "42",
+    "min_length": 24,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "id_527M4BZ6EU4YX3CYWDQ2GRAE"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "webhook",
+    "prefix": "whs_",
+    "type": "int",
+    "value": "7",
+    "min_length": 20,
+    "base_alphabet": "abcdefghijklmnopqrstuvwxyz",
+    "id": "whs_ywejcveqrftxicsyydck"
+  },
+  {
+    "secret": "new-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "previous_secrets": [
+      "old-secret"
+    ],
+    "id": "23TRRsuEuDcnnMGW"
+  },
+  {
+    "secret": "new-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "min_length": 24,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "previous_secrets": [
+      "old-secret"
+    ],
+    "id": "AHSB4A8KBVAUFP4HMPHUSV9W"
+  },
+  {
+    "secret": "rot-2026",
+    "scope": "order",
+    "prefix": "id_",
+    "type": "int",
+    "value": "7",
+    "min_length": 32,
+    "base_alphabet": "abcdefghijklmnopqrstuvwxyz",
+    "previous_secrets": [
+      "rot-2025",
+      "rot-2024"
+    ],
+    "id": "id_wriawqpmbortivlflwzkuxacdioshtgv"
+  },
+  {
+    "secret": "old-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "str",
+    "value": "hello",
+    "id": "bXrQSeF9DYcVopvJJ9"
+  },
+  {
+    "secret": "old-secret",
+    "scope": "order",
+    "prefix": "",
+    "type": "int",
+    "value": "42",
+    "min_length": 32,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "QZV2KQXSDXLAC4MDGY843T2URVMH5CSX"
+  },
+  {
+    "secret": "test-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "uuid",
+    "value": "12345678-1234-5678-1234-567812345678",
+    "min_length": 64,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "49WKEPCKMHYFSKHTBHP28KXGQYC929LS46PJE8RWAXR346HVYJUXTA2G5ZW98L7K"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "bytes",
+    "value": "00",
+    "min_length": 40,
+    "base_alphabet": "0123456789abcdef",
+    "id": "bf3ac749c447ac5fca4d5392b76a1fec80275db6"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "str",
+    "value": "",
+    "min_length": 24,
+    "base_alphabet": "abcdefg1234#$",
+    "id": "ac434g11ceg4afcd$e2fabcg"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "",
+    "type": "int",
+    "value": "1",
+    "min_length": 16,
+    "base_alphabet": "abcdefghijklmnopqrstuvwxyz",
+    "id": "dolcxresufvoiivg"
+  },
+  {
+    "secret": "test-secret",
+    "scope": "order",
+    "prefix": "id_",
+    "type": "str",
+    "value": "user@example.com",
+    "min_length": 24,
+    "id": "id_Nfp6XHIIIQslLNVKzfEvROuLc8LhEDRlrAW"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "session",
+    "prefix": "",
+    "type": "int",
+    "value": "256",
+    "min_length": 32,
+    "base_alphabet": "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+    "id": "TXMHGRYJHWY63GF4QBFBDJ3XP2CUZ5QH"
+  },
+  {
+    "secret": "parity-secret",
+    "scope": "user",
+    "prefix": "usr_",
+    "type": "uuid",
+    "value": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+    "min_length": 48,
+    "base_alphabet": "abcdefghijklmnopqrstuvwxyz",
+    "id": "usr_uqrccfyzznhtqsmqbercgrhzkerwitcsqclxdyefoypczwvt"
   }
 ]

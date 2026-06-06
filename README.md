@@ -190,6 +190,26 @@ scope_mask.try_decode_many("user", ["not-a-real-id"])  # [None]
 scope_mask.encode("user", None)                        # None
 ```
 
+### Custom configuration
+
+```python
+from scopemask import ScopeMask
+
+scope_mask = ScopeMask(
+    "parity-secret",
+    min_length=24,
+    base_alphabet="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+)
+scope_mask.encode("user", 42)   # "527M4BZ6EU4YX3CYWDQ2GRAE"
+
+# secret rotation: ids minted under an old secret still decode
+old = ScopeMask("old-secret")
+enc = old.encode("user", 99)    # "CeAUI5UM6CeUJISr"
+
+rotated = ScopeMask("new-secret", previous_secrets=("old-secret",))
+rotated.decode("user", enc)     # 99
+```
+
 ## JavaScript / TypeScript
 
 Runs in Node, Deno, Bun, and edge runtimes such as Cloudflare Workers and Vercel Edge.
@@ -296,6 +316,25 @@ scopeMask.tryDecodeMany("user", ["not-a-real-id"]);    // [null]
 scopeMask.encode("user", null);                        // null
 ```
 
+### Custom configuration
+
+```ts
+import { ScopeMask } from "scopemask";
+
+const scopeMask = new ScopeMask("parity-secret", {
+  minLength: 24,
+  baseAlphabet: "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+});
+scopeMask.encode("user", 42);   // "527M4BZ6EU4YX3CYWDQ2GRAE"
+
+// secret rotation: ids minted under an old secret still decode
+const old = new ScopeMask("old-secret");
+const enc = old.encode("user", 99);   // "CeAUI5UM6CeUJISr"
+
+const rotated = new ScopeMask("new-secret", { previousSecrets: ["old-secret"] });
+rotated.decode("user", enc!);   // 99
+```
+
 ## Golang
 
 ### Install
@@ -396,6 +435,26 @@ vals, _ := scopemask.DecodeMany[uint64](scopeMask, "user", ids, "")   // [1 2 3]
 ```go
 v, ok := scopemask.TryDecode[uint64](scopeMask, "user", id, "")
 vals, oks := scopemask.TryDecodeMany[uint64](scopeMask, "user", ids, "")
+```
+
+### Custom configuration
+
+```go
+import scopemask "github.com/khan-asfi-reza/scopemask/go"
+
+scopeMask, _ := scopemask.New(
+    "parity-secret",
+    scopemask.WithMinLength(24),
+    scopemask.WithBaseAlphabet("ABCDEFGHJKLMNPQRSTUVWXYZ23456789"),
+)
+id, _ := scopemask.Encode(scopeMask, "user", uint64(42), "")   // "527M4BZ6EU4YX3CYWDQ2GRAE"
+
+// secret rotation: ids minted under an old secret still decode
+old, _ := scopemask.New("old-secret")
+enc, _ := scopemask.Encode(old, "user", uint64(99), "")        // "CeAUI5UM6CeUJISr"
+
+rotated, _ := scopemask.New("new-secret", scopemask.WithPreviousSecrets("old-secret"))
+v2, _ := scopemask.Decode[uint64](rotated, "user", enc, "")    // 99
 ```
 
 ---

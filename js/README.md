@@ -107,6 +107,25 @@ scopeMask.encode("user", null);                        // null
 ```
 
 
+## Custom configuration
+
+```ts
+import { ScopeMask } from "scopemask";
+
+const scopeMask = new ScopeMask("parity-secret", {
+  minLength: 24,
+  baseAlphabet: "ABCDEFGHJKLMNPQRSTUVWXYZ23456789",
+});
+scopeMask.encode("user", 42);   // "527M4BZ6EU4YX3CYWDQ2GRAE"
+
+// secret rotation: ids minted under an old secret still decode
+const old = new ScopeMask("old-secret");
+const enc = old.encode("user", 99);   // "CeAUI5UM6CeUJISr"
+
+const rotated = new ScopeMask("new-secret", { previousSecrets: ["old-secret"] });
+rotated.decode("user", enc!);   // 99
+```
+
 ## Additional resources
 
 See [Overview](https://khan-asfi-reza.github.io/scopemask/#overview) for more details.

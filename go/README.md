@@ -103,6 +103,26 @@ vals, oks := scopemask.TryDecodeMany[uint64](scopeMask, "user", ids, "")
 ```
 
 
+## Custom configuration
+
+```go
+import scopemask "github.com/khan-asfi-reza/scopemask/go"
+
+scopeMask, _ := scopemask.New(
+    "parity-secret",
+    scopemask.WithMinLength(24),
+    scopemask.WithBaseAlphabet("ABCDEFGHJKLMNPQRSTUVWXYZ23456789"),
+)
+id, _ := scopemask.Encode(scopeMask, "user", uint64(42), "")   // "527M4BZ6EU4YX3CYWDQ2GRAE"
+
+// secret rotation: ids minted under an old secret still decode
+old, _ := scopemask.New("old-secret")
+enc, _ := scopemask.Encode(old, "user", uint64(99), "")        // "CeAUI5UM6CeUJISr"
+
+rotated, _ := scopemask.New("new-secret", scopemask.WithPreviousSecrets("old-secret"))
+v2, _ := scopemask.Decode[uint64](rotated, "user", enc, "")    // 99
+```
+
 ## Additional resources
 
 See [Overview](https://khan-asfi-reza.github.io/scopemask/#overview) for more details.

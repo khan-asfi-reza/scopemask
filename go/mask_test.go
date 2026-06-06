@@ -99,12 +99,15 @@ func TestEncodeDecode(t *testing.T) {
 }
 
 type parityVector struct {
-	Secret string `json:"secret"`
-	Scope  string `json:"scope"`
-	Prefix string `json:"prefix"`
-	Type   string `json:"type"`
-	Value  string `json:"value"`
-	ID     string `json:"id"`
+	Secret          string   `json:"secret"`
+	Scope           string   `json:"scope"`
+	Prefix          string   `json:"prefix"`
+	Type            string   `json:"type"`
+	Value           string   `json:"value"`
+	ID              string   `json:"id"`
+	MinLength       *int     `json:"min_length"`
+	BaseAlphabet    string   `json:"base_alphabet"`
+	PreviousSecrets []string `json:"previous_secrets"`
 }
 
 func TestCrossLanguageParity(t *testing.T) {
@@ -117,7 +120,17 @@ func TestCrossLanguageParity(t *testing.T) {
 		t.Fatalf("parse vectors: %v", err)
 	}
 	for _, v := range vectors {
-		scopeMask, _ := New(v.Secret)
+		var opts []Option
+		if v.MinLength != nil {
+			opts = append(opts, WithMinLength(uint8(*v.MinLength)))
+		}
+		if v.BaseAlphabet != "" {
+			opts = append(opts, WithBaseAlphabet(v.BaseAlphabet))
+		}
+		if len(v.PreviousSecrets) > 0 {
+			opts = append(opts, WithPreviousSecrets(v.PreviousSecrets...))
+		}
+		scopeMask, _ := New(v.Secret, opts...)
 		switch v.Type {
 		case "int":
 			n, _ := strconv.ParseUint(v.Value, 10, 64)

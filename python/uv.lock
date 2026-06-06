@@ -323,7 +323,6 @@ dev = [
     { name = "tox", specifier = ">=4.55.1" },
     { name = "tox-uv", specifier = ">=1.35.2" },
 ]
-docs = []
 
 [[package]]
 name = "sqids"
