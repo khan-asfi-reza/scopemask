@@ -6,6 +6,7 @@ Scope-bound opaque id masking.
 [![Python](https://github.com/khan-asfi-reza/scopemask/actions/workflows/python.yml/badge.svg)](https://github.com/khan-asfi-reza/scopemask/actions/workflows/python.yml)
 [![JS](https://github.com/khan-asfi-reza/scopemask/actions/workflows/js.yml/badge.svg)](https://github.com/khan-asfi-reza/scopemask/actions/workflows/js.yml)
 
+<!-- docs-home:start -->
 ScopeMask converts internal identifiers: database keys, emails, UUIDs, etc into short, opaque strings that are safe to expose in URLs and APIs, and decodes them back to the original value on demand.
 
 Each id is bound to a scope (such as `user` or `order`) and a secret. The same value yields a different id in every scope, and every id carries a keyed integrity check: a modified id, the wrong scope, or the wrong secret is rejected rather than silently decoding to an incorrect value.
@@ -82,6 +83,7 @@ flowchart LR
 ### Decode:
 
 Strip the prefix and sqids-decode with the secret-and-scope alphabet; reject if re-encoding the numbers does not reproduce the input. Then splits off the MAC, checks the version, and recomputes the MAC, comparing in constant time; rejects on any mismatch. Then reads the TAG to restore the original value and its type. If previous secrets are configured, each is tried until one verifies.
+<!-- docs-home:end -->
 
 
 ## Python
@@ -304,7 +306,7 @@ scopeMask.encode("user", null);                        // null
 ### Install
 
 ```bash
-go get github.com/khan-asfi-reza/scopemask/go
+go get github.com/khan-asfi-reza/scopemask/go@latest
 ```
 
 ### Configuration

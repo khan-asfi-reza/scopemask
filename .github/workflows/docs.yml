@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
-      - run: uv run --project python --group docs mkdocs build -f mkdocs.yml
+      - run: uvx --python 3.13 --with-requirements docs/requirements.txt mkdocs build -f mkdocs.yml
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

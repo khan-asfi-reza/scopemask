@@ -7,7 +7,7 @@ ScopeMask converts internal identifiers: database keys, emails, UUIDs, etc into 
 ## Install
 
 ```bash
-go get github.com/khan-asfi-reza/scopemask/go
+go get github.com/khan-asfi-reza/scopemask/go@latest
 ```
 
 ## Configuration
