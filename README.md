@@ -20,7 +20,6 @@ Each id is bound to a scope (such as `user` or `order`) and a secret. The same v
 - **Minimum length.** Ids are padded to at least 16 characters by default.
 - **Secret rotation.** Retired secrets can still be accepted for decoding.
 
-
 ### Payload layout
 
 Before encoding, the value is wrapped into a byte payload:
@@ -31,7 +30,7 @@ Before encoding, the value is wrapped into a byte payload:
 │ VERSION │   TAG   │   body    │   MAC (4 B)   │
 │  1 byte │ 1 byte  │  n bytes  │  HMAC[:4]     │
 └─────────┴─────────┴───────────┴───────────────┘
-            └──────── signed ────────┘
+ └──────── signed ────────┘
                                        └ keyed checksum over (scope + signed)
 TAG: 0=int  1=string  2=bytes  3=uuid
 ```
@@ -54,7 +53,7 @@ flowchart LR
 ```
 
 
-### Encode:
+### Encode
 
 Wrap the value as `VERSION + TAG + body` (the *signed* bytes); the TAG records the type and the body is the raw bytes. The first 4 bytes of `HMAC-SHA256(secret, scope + signed)` is the MAC and appended to form the payload. Then splits the payload into 6-byte chunks and encode them with sqids using the alphabet derived from the secret and scope, then prepend the prefix.
 
@@ -80,9 +79,17 @@ flowchart LR
   FP --> VAL(["value"])
 ```
 
-### Decode:
+### Decode
 
 Strip the prefix and sqids-decode with the secret-and-scope alphabet; reject if re-encoding the numbers does not reproduce the input. Then splits off the MAC, checks the version, and recomputes the MAC, comparing in constant time; rejects on any mismatch. Then reads the TAG to restore the original value and its type. If previous secrets are configured, each is tried until one verifies.
+
+
+## Important Note
+- **ScopeMask** is not an encryption library. The 4-byte MAC is an integrity check sized for URLs or API Data, not a 256-bit auth tag. For sensitive data, use proper encryption libraries and protocols.
+
+- It is not a replacement for authentication or authorization. Decoding a valid user ID only tells that the ID is real and untampered. It does not tell, who is asking or whether they are allowed to see that record. Always keep authentication in place, and always run permission checks on every request. Verify that the caller actually owns the data before returning it, and never serve a record to someone who does not own it. ScopeMask stops the ID from leaking and from being guessed or forged.
+
+
 <!-- docs-home:end -->
 
 
